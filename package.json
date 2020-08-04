@@ -20,7 +20,7 @@
     "@angular/platform-browser": "~10.0.7",
     "@angular/platform-browser-dynamic": "~10.0.7",
     "@angular/router": "~10.0.7",
-    "@elemental-concept/grappa": "^0.4.0",
+    "@elemental-concept/grappa": "^0.8.0",
     "rxjs": "~6.6.2",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
