@@ -12,6 +12,9 @@
   "bugs": {
     "url": "https://github.com/elementalconcept/grappa-jwt/issues"
   },
+  "dependencies": {
+    "tslib": "^2.0.0"
+  },
   "peerDependencies": {
     "@angular/common": ">= 9 < 11",
     "@angular/core": ">= 9 < 11",
