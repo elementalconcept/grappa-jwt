@@ -13,8 +13,9 @@
     "url": "https://github.com/elementalconcept/grappa-jwt/issues"
   },
   "peerDependencies": {
-    "@angular/common": ">= 6.0.0 <= 8",
-    "@angular/core": ">= 6.0.0 <= 8",
-    "@elemental-concept/grappa": "^0.4.0"
+    "@angular/common": ">= 9 < 11",
+    "@angular/core": ">= 9 < 11",
+    "@elemental-concept/grappa": "^0.8.0",
+    "rxjs": ">= 6.0.0 < 7"
   }
 }
