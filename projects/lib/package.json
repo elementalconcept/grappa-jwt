@@ -1,6 +1,6 @@
 {
   "name": "@elemental-concept/grappa-jwt",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Decorator-powered JWT handling library for Grappa and Angular",
   "author": "Elemental Concept",
   "homepage": "https://github.com/elementalconcept/grappa-jwt#readme",
