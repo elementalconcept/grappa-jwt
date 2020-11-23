@@ -18,7 +18,7 @@ $ yarn add @elemental-concept/grappa-jwt
 
 Then add `GrappaModule` to your project `NgModule`
 
-```javascript
+```typescript
 @NgModule({
   declarations: [ AppComponent ],
   imports: [
@@ -36,7 +36,7 @@ export class AppModule { }
 Grappa JWT provide a easy and automatic way of using JWT in your HttpClient.
 To be able to use is you need to pass the token to the `SessionManagerService`:
 
-```javascript
+```typescript
 @Injectable())
 export class JWTService {
   constructor(sessionManagerService: SessionManagerService) { }
@@ -63,7 +63,7 @@ export class JWTService {
 
 You can use GrappaJwt with Grappa to have the full potential:
 
-```javascript
+```typescript
 @Injectable()
 @RestClient('http://example.com/api/')
 @Authenticate()
@@ -86,7 +86,7 @@ export class UserService {
 
 if you want somehthing
 
-```javascript
+```typescript
 @Injectable()
 @RestClient('http://example.com/api/')
 @Authenticate()
@@ -128,7 +128,7 @@ by default GrappaJwt will use `window.sessionStorage`, but you can use it with o
 You first need to add a new `PersistenceManager` using the Ionic Storage.
 Remeber to user `GRAPPA-JWT` as key.
 
-```javascript
+```typescript
 export class PersistenceManager {
   constructor(private readonly storage: Storage) { }
 
@@ -148,7 +148,7 @@ export class PersistenceManager {
 
 Then you have to create a factory to create a `GrappaAuthConfigToken`
 
-```javascript
+```typescript
 export function grappaConfigFactory(storage: Storage) {
 	return {
 		persistence: new PersistenceManager(storage)
@@ -159,7 +159,7 @@ export function grappaConfigFactory(storage: Storage) {
 Finally, provide the `GrappaAuthConfigToken` using the `grappaConfigFactory` you created, passing `Storage` into the dependencies:
 
 
-```javascript
+```typescript
 @NgModule({
   declarations: [ AppComponent ],
   imports: [
