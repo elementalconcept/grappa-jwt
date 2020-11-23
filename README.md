@@ -1,27 +1,183 @@
-# GrappaJwt
+# Grappa Jwt
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.1.
+Decorator-powered REST client for Angular 5+ and its HttpClient for handling JWT.
 
-## Development server
+## Installation
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+With npm:
 
-## Code scaffolding
+```Shell
+$ npm i --save @elemental-concept/grappa-jwt
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+With Yarn:
 
-## Build
+```Shell
+$ yarn add @elemental-concept/grappa-jwt
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Then add `GrappaModule` to your project `NgModule`
 
-## Running unit tests
+```javascript
+@NgModule({
+  declarations: [ AppComponent ],
+  imports: [
+    ...,
+    GrappaAuthModule
+  ],
+  providers: [ ],
+  bootstrap: [ AppComponent ]
+})
+export class AppModule { }
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Introduction
 
-## Running end-to-end tests
+Grappa JWT provide a easy and automatic way of using JWT in your HttpClient.
+To be able to use is you need to pass the token to the `SessionManagerService`:
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+```javascript
+@Injectable())
+export class JWTService {
+  constructor(sessionManagerService: SessionManagerService) { }
 
-## Further help
+  login() {
+    this.someService
+      .login(request)
+      .subscribe(
+        response => !!response.token
+          ? this.authSuccess(response)
+          : this.authError(),
+        () => this.authError());
+  }
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+  private authSuccess(response: Response) {
+    this.sessionManagerService.token = `Bearer ${response.token}`;
+    // do somehting
+  }
+  
+  private authError() {
+    //  error handling
+  }
+```
+
+You can use GrappaJwt with Grappa to have the full potential:
+
+```javascript
+@Injectable()
+@RestClient('http://example.com/api/')
+@Authenticate()
+export class UserService {
+  @GET('/users')
+  list: () => Observable<User[]>;
+
+  @GET('/users/{0}')
+  find: (id: number) => Observable<User>;
+
+  @POST('/users')
+  create: (user: User) => Observable<User>;
+
+  @PUT('/users/{0}')
+  update: (id: number, user: User) => Observable<User>;
+}
+```
+
+### Example of expiration handling
+
+if you want somehthing
+
+```javascript
+@Injectable()
+@RestClient('http://example.com/api/')
+@Authenticate()
+export class UserService {
+  constructor(sessionManagerService: SessionManagerService, router: Router) { }
+
+  @GET('/users')
+  list: () => Observable<User[]>;
+
+  @GET('/users/{0}')
+  find: (id: number) => Observable<User>;
+
+  @POST('/users')
+  create: (user: User) => Observable<User>;
+
+  @PUT('/users/{0}')
+  update: (id: number, user: User) => Observable<User>;
+
+  @AfterRequest()
+  expirationFilter(observable: Observable<any>) {
+    return observable.pipe(catchError(e => this.deauthorise(e)));
+  }
+
+  private deauthorise(e) {
+    if (e.status === 401 || e.status === 403) {
+      this.sessionManagerService.clear();
+      this.router.navigate([ '' ]).then();
+    }
+
+    return throwError(e);
+  }
+}
+```
+
+### Custom Storage
+
+by default GrappaJwt will use `window.sessionStorage`, but you can use it with other storage. The Ionic Storage is a good example:
+
+You first need to add a new `PersistenceManager` using the Ionic Storage.
+Remeber to user `GRAPPA-JWT` as key.
+
+```javascript
+export class PersistenceManager {
+  constructor(private readonly storage: Storage) { }
+
+  put(value: string) {
+    return this.storage.set('GRAPPA-JWT', value);
+  }
+
+  get() {
+    return this.storage.get('GRAPPA-JWT');
+  }
+
+  remove() {
+    this.storage.remove('GRAPPA-JWT');
+  }
+}
+```
+
+Then you have to create a factory to create a `GrappaAuthConfigToken`
+
+```javascript
+export function grappaConfigFactory(storage: Storage) {
+	return {
+		persistence: new PersistenceManager(storage)
+	};
+}
+```
+
+Finally, provide the `GrappaAuthConfigToken` using the `grappaConfigFactory` you created, passing `Storage` into the dependencies:
+
+
+```javascript
+@NgModule({
+  declarations: [ AppComponent ],
+  imports: [
+    ...,
+    IonicStorageModule.forRoot(),
+
+    GrappaAuthModule,
+    GrappaModule,
+  ],
+  providers: [
+    { 
+      provide: GrappaAuthConfigToken,
+      useFactory: grappaConfigFactory,
+      deps:[ Storage ]
+    }
+  ],
+  bootstrap: [ AppComponent ]
+})
+export class AppModule { }
+```
+
