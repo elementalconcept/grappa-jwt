@@ -17,7 +17,13 @@ export class SessionManagerService {
 
   set token(value: string) {
     this.lastToken = value;
-    this.config.persistence.put(this.lastToken);
+
+    if (this.tokenIsNotEmpty(this.lastToken)) {
+      this.config.persistence.put(this.lastToken);
+    } else {
+      this.config.persistence.remove();
+    }
+
     this.token$.next(this.lastToken);
   }
 
