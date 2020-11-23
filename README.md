@@ -1,6 +1,6 @@
 # Grappa Jwt
 
-Decorator-powered REST client for Angular 5+ and its HttpClient for handling JWT.
+Decorator-powered REST client for Angular 9+ and its HttpClient for handling JWT, plus RxJs 6+.
 
 ## Installation
 
