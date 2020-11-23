@@ -16,7 +16,7 @@ With Yarn:
 $ yarn add @elemental-concept/grappa-jwt
 ```
 
-Then add `GrappaModule` to your project `NgModule`
+Then add `GrappaAuthModule` to your project `NgModule`
 
 ```typescript
 @NgModule({
