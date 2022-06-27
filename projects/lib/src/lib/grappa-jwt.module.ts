@@ -2,8 +2,7 @@ import { Inject, NgModule } from '@angular/core';
 
 import { instances } from './internal/instances';
 
-import { GrappaJwtConfig, GrappaJwtConfigToken } from './public/models/grappa-jwt-config';
-import { SessionManagerService } from './public/services/session-manager/session-manager.service';
+import { GrappaJwtConfig, GrappaJwtConfigToken, SessionManagerService } from './public';
 
 @NgModule()
 export class GrappaJwtModule {

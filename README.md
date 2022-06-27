@@ -1,47 +1,44 @@
 # Grappa Jwt
 
-Decorator-powered REST client for Angular 9+ and its HttpClient for handling JWT, plus RxJs 6+.
+Decorator-powered JWT handling library for Grappa and **Angular 9+**, plus **RxJs 6+**.
 
-## Installation
+| Last version | Angular Versions       | Node             |
+|--------------|------------------------|------------------|
+| `0.8.3`      | 9+ up to 14 (included) | 14.15.0 or later |
 
-With npm:
+## 🛠 Installation
 
-```Shell
-$ npm i --save @elemental-concept/grappa-jwt
-```
+- With **npm**: `npm i --save @elemental-concept/grappa-jwt`
+- With **Yarn**: `yarn add @elemental-concept/grappa-jwt`
 
-With Yarn:
-
-```Shell
-$ yarn add @elemental-concept/grappa-jwt
-```
-
-Then add `GrappaAuthModule` to your project `NgModule`
+Add `GrappaJwtModule` to your main `AppModule` to imports section.
 
 ```typescript
 @NgModule({
-  declarations: [ AppComponent ],
+  declarations: [ ... ],
   imports: [
     ...,
-    GrappaAuthModule
-  ],
-  providers: [ ],
-  bootstrap: [ AppComponent ]
+  GrappaJwtModule
+],
+providers: [ ],
+  bootstrap: [ ... ]
 })
-export class AppModule { }
+export class AppModule {
+}
 ```
 
-## Introduction
+## 📖 Introduction
 
-Grappa JWT provide a easy and automatic way of using JWT in your HttpClient.
+**Grappa JWT** provide a easy and automatic way of using JWT in your HttpClient.
 To be able to use is you need to pass the token to the `SessionManagerService`:
 
 ```typescript
-@Injectable())
+@Injectable()
 export class JWTService {
-  constructor(sessionManagerService: SessionManagerService) { }
+  constructor(sessionManagerService: SessionManagerService) {
+  }
 
-  login() {
+  login = () =>
     this.someService
       .login(request)
       .subscribe(
@@ -49,16 +46,16 @@ export class JWTService {
           ? this.authSuccess(response)
           : this.authError(),
         () => this.authError());
-  }
 
   private authSuccess(response: Response) {
-    this.sessionManagerService.token = `Bearer ${response.token}`;
+    this.sessionManagerService.token = `Bearer ${ response.token }`;
     // do somehting
   }
-  
+
   private authError() {
     //  error handling
   }
+}
 ```
 
 You can use GrappaJwt with Grappa to have the full potential:
@@ -158,7 +155,6 @@ export function grappaConfigFactory(storage: Storage) {
 
 Finally, provide the `GrappaAuthConfigToken` using the `grappaConfigFactory` you created, passing `Storage` into the dependencies:
 
-
 ```typescript
 @NgModule({
   declarations: [ AppComponent ],
@@ -180,4 +176,3 @@ Finally, provide the `GrappaAuthConfigToken` using the `grappaConfigFactory` you
 })
 export class AppModule { }
 ```
-
