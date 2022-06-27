@@ -1,7 +1,6 @@
 import { InjectionToken } from '@angular/core';
 
-import { PersistenceManager } from '../persistence/persistence-manager';
-import { SessionStorage } from '../persistence';
+import { PersistenceManager, SessionStorage } from '../persistence';
 
 export interface GrappaJwtConfig {
   persistence?: PersistenceManager;
