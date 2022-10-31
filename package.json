@@ -20,7 +20,7 @@
     "@angular/platform-browser": "^13.3.11",
     "@angular/platform-browser-dynamic": "^13.3.11",
     "@angular/router": "^13.3.11",
-    "@elemental-concept/grappa": "^0.8.6",
+    "@elemental-concept/grappa": "^0.8.7",
     "core-js": "^3.26.0",
     "rxjs": "~7.5.7",
     "tslib": "^2.4.0",
