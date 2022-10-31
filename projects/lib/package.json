@@ -16,9 +16,9 @@
     "tslib": "^2.0.0"
   },
   "peerDependencies": {
-    "@angular/common": ">= 9 < 15",
-    "@angular/core": ">= 9 < 15",
-    "@elemental-concept/grappa": "0.8.5",
+    "@angular/common": ">= 9 < 14",
+    "@angular/core": ">= 9 < 14",
+    "@elemental-concept/grappa": "0.8.7",
     "rxjs": ">= 6.0.0 < 8"
   }
 }
