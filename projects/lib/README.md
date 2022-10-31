@@ -2,14 +2,13 @@
 
 Decorator-powered JWT handling library for Grappa and **Angular 9+**, plus **RxJs 6+**.
 
-| Last version | Angular Versions       | Node             |
-|--------------|------------------------|------------------|
-| `0.8.3`      | 9+ up to 14 (included) | 14.15.0 or later |
+| Last version | Angular Versions       | Node | Typescript |
+|--------------|------------------------|------|------------|
+| `0.8.4`      | 9+ up to 13 (included) | 14   | 4.6        |
 
 ## 🛠 Installation
 
-- With **npm**: `npm i --save @elemental-concept/grappa-jwt`
-- With **Yarn**: `yarn add @elemental-concept/grappa-jwt`
+- With **npm**: `npm i --save @elemental-concept/grappa-jwt` 
 
 Add `GrappaJwtModule` to your main `AppModule` to imports section.
 
