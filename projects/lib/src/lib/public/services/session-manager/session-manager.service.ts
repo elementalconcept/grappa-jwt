@@ -25,7 +25,7 @@ export class SessionManagerService {
     return this.lastToken;
   }
 
-  set token(value: string) {
+  set token(value: string | null) {
     this.lastToken = value;
 
     if (this.tokenIsNotEmpty(this.lastToken)) {
