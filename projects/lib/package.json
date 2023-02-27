@@ -1,24 +1,29 @@
 {
   "name": "@elemental-concept/grappa-jwt",
-  "version": "0.8.9",
+  "version": "1.0.0",
   "description": "Decorator-powered JWT handling library for Grappa and Angular",
-  "author": "Elemental Concept",
-  "homepage": "https://github.com/elementalconcept/grappa-jwt#readme",
-  "license": "BSD-2-Clause",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/elementalconcept/grappa-jwt.git"
   },
+  "keywords": [
+    "http",
+    "annotation",
+    "angular"
+  ],
+  "author": "Elemental Concept",
+  "license": "BSD-2-Clause",
   "bugs": {
     "url": "https://github.com/elementalconcept/grappa-jwt/issues"
   },
-  "dependencies": {
-    "tslib": "^2.0.0"
-  },
+  "homepage": "https://github.com/elementalconcept/grappa-jwt#readme",
   "peerDependencies": {
     "@angular/common": ">= 9 < 16",
     "@angular/core": ">= 9 < 16",
-    "@elemental-concept/grappa": "0.8.9",
+    "@elemental-concept/grappa": "1.0.0",
     "rxjs": ">= 6.0.0 < 8"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
   }
 }

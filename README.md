@@ -4,7 +4,7 @@ Decorator-powered JWT handling library for Grappa and **Angular 9+**, plus **RxJ
 
 | Last version | Angular Versions       | Node | Typescript |
 |--------------|------------------------|------|------------|
-| `0.8.9`      | 9+ up to 15 (included) | 14   | 4.8        |
+| `1.0.0`      | 9+ up to 15 (included) | 14   | 4.6        |
 
 ## 🛠 Installation
 
@@ -17,9 +17,9 @@ Add `GrappaJwtModule` to your main `AppModule` to imports section.
   declarations: [ ... ],
   imports: [
     ...,
-  GrappaJwtModule
-],
-providers: [ ],
+    GrappaJwtModule
+  ],
+  providers: [ ],
   bootstrap: [ ... ]
 })
 export class AppModule {
@@ -146,9 +146,9 @@ Then you have to create a factory to create a `GrappaAuthConfigToken`
 
 ```typescript
 export function grappaConfigFactory(storage: Storage) {
-	return {
-		persistence: new PersistenceManager(storage)
-	};
+  return {
+    persistence: new PersistenceManager(storage)
+  };
 }
 ```
 
@@ -160,12 +160,12 @@ Finally, provide the `GrappaAuthConfigToken` using the `grappaConfigFactory` you
   imports: [
     ...,
     IonicStorageModule.forRoot(),
-
+  
     GrappaAuthModule,
     GrappaModule,
   ],
   providers: [
-    { 
+    {
       provide: GrappaAuthConfigToken,
       useFactory: grappaConfigFactory,
       deps:[ Storage ]
