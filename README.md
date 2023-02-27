@@ -159,18 +159,18 @@ Finally, provide the `GrappaAuthConfigToken` using the `grappaConfigFactory` you
   declarations: [ AppComponent ],
   imports: [
     ...,
-  IonicStorageModule.forRoot(),
-
-  GrappaAuthModule,
-  GrappaModule,
-],
-providers: [
-  {
-    provide: GrappaAuthConfigToken,
-    useFactory: grappaConfigFactory,
-    deps:[ Storage ]
-  }
-],
+    IonicStorageModule.forRoot(),
+  
+    GrappaAuthModule,
+    GrappaModule,
+  ],
+  providers: [
+    {
+      provide: GrappaAuthConfigToken,
+      useFactory: grappaConfigFactory,
+      deps:[ Storage ]
+    }
+  ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
