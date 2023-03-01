@@ -14,13 +14,9 @@ Add `GrappaJwtModule` to your main `AppModule` to imports section.
 
 ```typescript
 @NgModule({
-  declarations: [ ... ],
   imports: [
-    ...,
     GrappaJwtModule
-  ],
-  providers: [ ],
-  bootstrap: [ ... ]
+  ]
 })
 export class AppModule {
 }
