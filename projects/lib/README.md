@@ -4,7 +4,7 @@ Decorator-powered JWT handling library for Grappa and **Angular 9+**, plus **RxJ
 
 | Last version | Angular Versions       | Node | Typescript |
 |--------------|------------------------|------|------------|
-| `1.0.0`      | 9+ up to 15 (included) | 14   | 4.6        |
+| `1.1.1`      | 9+ up to 15 (included) | 14   | 4.6        |
 
 ## 🛠 Installation
 
