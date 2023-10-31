@@ -147,9 +147,9 @@ Then you have to create a factory to create a `GrappaAuthConfigToken`
 
 ```typescript
 export function grappaConfigFactory(storage: Storage) {
-	return {
-		persistence: new PersistenceManager(storage)
-	};
+  return {
+    persistence: new PersistenceManager(storage)
+  };
 }
 ```
 
