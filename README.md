@@ -2,10 +2,11 @@
 
 Decorator-powered JWT handling library for Grappa and **Angular 13+**, plus **RxJs 6+**.
 
-| Last version | Angular Versions        | Node |
-|--------------|-------------------------|------|
-| `16.0.0`     | 13 up to 16 (included)  | 16   |
-| `1.1.1`      | 13 up to 15 (included)  | 14   |
+| Last version | Angular Versions       | Node |
+|--------------|------------------------|------|
+| `17.0.0`     | 13 up to 17 (included) | 18   |
+| `16.0.0`     | 13 up to 16 (included) | 16   |
+| `1.1.1`      | 13 up to 15 (included) | 14   |
 
 ## 🛠 Installation
 
@@ -147,9 +148,9 @@ Then you have to create a factory to create a `GrappaAuthConfigToken`
 
 ```typescript
 export function grappaConfigFactory(storage: Storage) {
-  return {
-    persistence: new PersistenceManager(storage)
-  };
+	return {
+		persistence: new PersistenceManager(storage)
+	};
 }
 ```
 
