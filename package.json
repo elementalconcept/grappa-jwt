@@ -21,7 +21,6 @@
     "@angular/platform-browser": "^17.0.8",
     "@angular/platform-browser-dynamic": "^17.0.8",
     "@angular/router": "^17.0.8",
-    "@elemental-concept/grappa": "^17.0.0",
     "core-js": "^3.26.0",
     "rxjs": "~7.5.7",
     "tslib": "^2.4.0",

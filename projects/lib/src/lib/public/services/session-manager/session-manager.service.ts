@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 
 import { Observable, ReplaySubject } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -9,11 +9,13 @@ import { GrappaJwtConfig, GrappaJwtConfigToken } from '../../models';
   providedIn: 'root'
 })
 export class SessionManagerService {
+  private readonly config: GrappaJwtConfig = inject(GrappaJwtConfigToken);
+
   private lastToken: string | null | undefined;
   private token$ = new ReplaySubject<string | null>(1);
   private authorisationChanges$ = this.token$.pipe(map(token => this.tokenIsNotEmpty(token)));
 
-  constructor(@Inject(GrappaJwtConfigToken) private readonly config: GrappaJwtConfig) {
+  constructor() {
     this.token = this.config.persistence.get();
   }
 
